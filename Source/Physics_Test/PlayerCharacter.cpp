@@ -94,7 +94,7 @@ void APlayerCharacter::Shoot()
 
 	World = GetWorld();
 
-	FVector Location = GetActorLocation();
+	FVector Location = GetActorLocation() + GetActorForwardVector() * SpawnDistance;
 
 
 	if (World)

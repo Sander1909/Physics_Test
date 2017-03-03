@@ -37,6 +37,8 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Spawning")
 		TSubclassOf<class APlayerBullet> PlayerBullet_BP;
 
+	float SpawnDistance = 30.0f;
+
 	
 	
 };

@@ -25,6 +25,8 @@ public:
 
 	void Move_Y_Axis(float Value);
 	void Move_X_Axis(float Value);
+	
+	void SetPlayerRotation();
 
 	
 	

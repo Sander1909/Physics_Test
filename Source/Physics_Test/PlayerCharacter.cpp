@@ -16,6 +16,11 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	APlayerController* MyController = GetWorld()->GetFirstPlayerController();
+
+	MyController->bShowMouseCursor = true;
+
 	
 }
 
@@ -23,6 +28,8 @@ void APlayerCharacter::BeginPlay()
 void APlayerCharacter::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
+
+	SetPlayerRotation();
 
 }
 
@@ -54,5 +61,27 @@ void APlayerCharacter::Move_X_Axis(float Value)
 
 }
 
+void APlayerCharacter::SetPlayerRotation()
+{
 
-//Test post pls ignore
+	FHitResult Hit;
+	bool HitResult = false;
+
+	HitResult = GetWorld()->GetFirstPlayerController()->GetHitResultUnderCursorByChannel(UEngineTypes::ConvertToTraceType(ECC_WorldStatic), true, Hit);
+
+	if (HitResult)
+	{
+		FVector CursorLocation = Hit.Location;
+
+		//		UE_LOG(LogTemp, Warning, TEXT("Cursor location %s!"), *CursorLocation.ToString());
+
+		FVector TempLocation = FVector(CursorLocation.X, CursorLocation.Y, 30.f);
+
+		FVector NewDirection = TempLocation - GetActorLocation();
+		NewDirection.Z = 0.0f;
+		NewDirection.Normalize();
+		SetActorRotation(NewDirection.Rotation());
+	}
+
+
+}

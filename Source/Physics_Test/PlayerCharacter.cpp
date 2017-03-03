@@ -31,6 +31,28 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAxis("MoveY", this, &APlayerCharacter::Move_Y_Axis);
+	PlayerInputComponent->BindAxis("MoveX", this, &APlayerCharacter::Move_X_Axis);
+
+
 }
+
+void APlayerCharacter::Move_Y_Axis(float Value)
+{
+
+	FVector MoveY = FVector(0.0f, 1.0f, 0.0f);
+	AddMovementInput(MoveY, Value);
+
+}
+
+void APlayerCharacter::Move_X_Axis(float Value)
+{
+
+	FVector MoveX = FVector(1.0f, 0.0f, 0.0f);
+
+	AddMovementInput(MoveX, Value);
+
+}
+
 
 //Test post pls ignore

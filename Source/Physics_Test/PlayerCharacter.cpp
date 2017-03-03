@@ -2,6 +2,7 @@
 
 #include "Physics_Test.h"
 #include "PlayerCharacter.h"
+#include "PlayerBullet.h"
 
 
 // Sets default values
@@ -40,6 +41,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	PlayerInputComponent->BindAxis("MoveY", this, &APlayerCharacter::Move_Y_Axis);
 	PlayerInputComponent->BindAxis("MoveX", this, &APlayerCharacter::Move_X_Axis);
+
+	PlayerInputComponent->BindAction("Shoot", IE_Pressed, this, &APlayerCharacter::Shoot);
 
 
 }
@@ -84,4 +87,18 @@ void APlayerCharacter::SetPlayerRotation()
 	}
 
 
+}
+
+void APlayerCharacter::Shoot()
+{
+
+	World = GetWorld();
+
+	FVector Location = GetActorLocation();
+
+
+	if (World)
+	{
+		World->SpawnActor<APlayerBullet>(PlayerBullet_BP, Location, FRotator::ZeroRotator);
+	}
 }

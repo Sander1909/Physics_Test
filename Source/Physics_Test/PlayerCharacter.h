@@ -27,6 +27,15 @@ public:
 	void Move_X_Axis(float Value);
 	
 	void SetPlayerRotation();
+	void Shoot();
+
+private:
+
+	UPROPERTY()
+		UWorld * World;
+
+	UPROPERTY(EditAnywhere, Category = "Spawning")
+		TSubclassOf<class APlayerBullet> PlayerBullet_BP;
 
 	
 	

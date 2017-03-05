@@ -36,6 +36,8 @@ void AScalingBullet::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
+	SetBulletLocation(DeltaTime);
+
 	ScaleBullet();
 }
 
@@ -51,4 +53,10 @@ void AScalingBullet::ScaleBullet()
 	FVector NewScale = GetActorScale() + FVector(1.0f,1.0f,1.0f) * ScaleRestriction;
 
 	SetActorScale3D(NewScale);
+}
+
+void AScalingBullet::SetBulletLocation(float DeltaTime)
+{
+	FVector NewLocation = GetActorLocation() + GetActorForwardVector() * Speed * DeltaTime;
+	SetActorLocation(NewLocation);
 }

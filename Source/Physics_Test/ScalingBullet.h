@@ -26,13 +26,15 @@ public:
 			bool bFromSweep, const FHitResult &SweepResult);
 
 	void ScaleBullet();
+	void SetBulletLocation(float DeltaTime);
 
 private:
 
 	UPROPERTY(EditAnywhere, Category = "Collision")
 		UShapeComponent * CollisionBox;
 
-	float ScaleRestriction = 0.01f;
+	float ScaleRestriction = 0.05f;
+	float Speed = 200.0f;
 
 
 	

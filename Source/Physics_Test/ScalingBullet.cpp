@@ -25,7 +25,7 @@ void AScalingBullet::BeginPlay()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("No collision box"));
+		UE_LOG(LogTemp, Warning, TEXT("Scaling bullet no collision box"));
 
 	}
 	

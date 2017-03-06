@@ -2,6 +2,7 @@
 
 #include "Physics_Test.h"
 #include "PlayerBullet.h"
+#include "EnemyBoi.h"
 
 
 // Sets default values
@@ -25,7 +26,7 @@ void APlayerBullet::BeginPlay()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("No collision box"));
+		UE_LOG(LogTemp, Warning, TEXT("Bullet no collision box"));
 
 	}
 }
@@ -46,15 +47,10 @@ void APlayerBullet::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *
 {
 	//UE_LOG(LogTemp, Warning, TEXT("Enemy Overlap %s"), *OtherActor->GetName())
 
-//	if (OtherActor->IsA(ABullet::StaticClass()))
-//	{
-//		Health--;
-//		OtherActor->Destroy();
-//		if (Health < 1)
-//		{
-			//DeleteThisEnemy = true;
-			//SetActorLocation(DestructionLocation)
-//			Destroy();
-//		}
-//	}
+	if (OtherActor->IsA(AEnemyBoi::StaticClass()))
+	{
+
+		OtherActor->Destroy();
+		Destroy();
+	}
 }

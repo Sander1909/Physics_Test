@@ -103,3 +103,10 @@ void APlayerCharacter::Shoot()
 		World->SpawnActor<APlayerBullet>(PlayerBullet_BP, Location, FRotator::ZeroRotator);
 	}
 }
+
+void APlayerCharacter::FellOutOfWorld(const class UDamageType & dmgType)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Character fell out of world"));
+
+	Destroy();
+}

@@ -29,6 +29,8 @@ public:
 	void SetPlayerRotation();
 	void Shoot();
 
+	void FellOutOfWorld(const class UDamageType & dmgType);
+
 private:
 
 	UPROPERTY()

@@ -53,4 +53,9 @@ void APlayerBullet::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *
 		OtherActor->Destroy();
 		Destroy();
 	}
+	if (OtherActor->IsRootComponentStatic())
+	{
+		//Static object -> generate overlap events -> (computing ++) Use CCD (continous collision detection)
+		Destroy();
+	}
 }

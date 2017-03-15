@@ -36,7 +36,6 @@ private:
 	float ScaleRestriction = 0.05f;
 	float Speed = 200.0f;
 
-
 	
 	
 };
